@@ -3,7 +3,7 @@
 # program to write out long numbers from IPv6
 
 #v6Bits = 64
-StrBits = raw_input("How many bits does the Ipv6 network have? ")
+StrBits = input("How many bits does the Ipv6 network have? ")
 v6Bits = int(StrBits)
 
 def numToWords(num,join=True):
@@ -24,7 +24,7 @@ def numToWords(num,join=True):
     else:
         numStr = '%d'%num
         numStrLen = len(numStr)
-        groups = (numStrLen+2)/3
+        groups = (numStrLen+2) // 3
         numStr = numStr.zfill(groups*3)
         for i in range(0,groups*3,3):
             h,t,u = int(numStr[i]),int(numStr[i+1]),int(numStr[i+2])
@@ -40,13 +40,13 @@ def numToWords(num,join=True):
                 else: words.append(tens[t])
             else:
                 if u>=1: words.append(units[u])
-            if (g>=1) and ((h+t+u)>0): words.append(thousands[g]+',')
+            if (g>=1) and ((h+t+u)>0): words.append(thousands[int(g)]+',')
     if join: return ' '.join(words)
     return words
 
 #example usages
-print "IPv6 /" + StrBits + " Networks = "
-print 2**(128-v6Bits)
-print numToWords(2**(128-v6Bits))
+print("IPv6 /" + StrBits + " Networks = ")
+print(2**(128-v6Bits))
+print(numToWords(2**(128-v6Bits)))
 
 
